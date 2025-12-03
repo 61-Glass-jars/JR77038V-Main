@@ -98,33 +98,24 @@ void opcontrol() {
 
         // move the robot
         chassis.tank(leftY, rightY);
-
+        
+        
         if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
             MainPistons.extend();
         }
         else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_X)){
             MainPistons.retract();
         }
-
+        
 
         if (controller.get_digital(DIGITAL_R1)) {
-            IO_velocities(-200, -200, -200);
-            // This is mapped to Top Outtake
+            IO_velocities(150);
         }
         else if (controller.get_digital(DIGITAL_R2)) {
-            IO_velocities(-150, -150, 150);
-            // This is mapped to Middle outake 
-        }
-        else if (controller.get_digital(DIGITAL_L1)) {
-            IO_velocities(200, 200, 200);
-            // This is mapped to Bottom Outtake
-        }
-        else if (controller.get_digital(DIGITAL_L2)) {
-            IO_velocities(-130, 200, 200);
-            // This is mapped to Basket
+            IO_velocities(-150);
         }
         else {
-            IO_velocities(0, 0, 0);
+            IO_velocities(0);
             // Required else function for when no inputs are pressed
         }
 

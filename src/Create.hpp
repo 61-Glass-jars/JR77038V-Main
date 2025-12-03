@@ -1,5 +1,5 @@
 #pragma once
-#include "main.h"
+#include "main.h" // IWYU pragma: keep
 #include "lemlib/api.hpp" // IWYU pragma: keep
 
 //controller 
@@ -9,9 +9,8 @@ extern pros::Controller controller;
 extern pros::adi::Pneumatics MainPistons;
 
 // Motors responsible for Intake & Outtake 
-extern pros::Motor IO4;
-extern pros::Motor IO5;
-extern pros::Motor IO7;
+extern pros::Motor IO10;
+extern pros::Motor IO8;
 
 // Creating the components for the chassis
 extern pros::MotorGroup leftmotors;
@@ -31,4 +30,4 @@ extern lemlib::Chassis chassis;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Creating A motor Group for the outtake motors
-extern void IO_velocities(int velocity_IO4, int velocity_IO5, int velocity_IO7);
+extern void IO_velocities(int velocites);

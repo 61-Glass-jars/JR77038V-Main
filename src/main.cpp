@@ -50,24 +50,26 @@ void initialize() {
 void Left_side() {
     // function for left side autonomous
     // Move between Long goal and Loader
-    chassis.moveToPoint(0, 18.248, 5000);
-    chassis.turnToHeading(270, 3000);
+    chassis.moveToPoint(0, 18.248, 2000);
+    chassis.turnToHeading(270, 2000 );
     IO_velocities(200,-300,200);
     Hood.retract();
 
     // Collect Octoballs from Bottom Right Pile
-    chassis.moveToPose(-6.292, 46.982, 0, 2000, {.horizontalDrift = 2, .lead=0.9});
-    chassis.turnToHeading(180, 2000);
+    chassis.moveToPose(-6.292, 46.982, 0, 3000, {.lead=0.9});
+    chassis.turnToHeading(177, 1500, {.maxSpeed = 75});
     
     //postiing bot between loader and long goal
-    chassis.moveToPose(-30.7, 14.531, 270, 3000., {.horizontalDrift = 2, .lead=0.575, });
-    chassis.turnToHeading(180, 3000);
-    scraperPistion.toggle();
+    chassis.moveToPose(-29, 14.53, 270, 3000., {.lead=0.575, });
+    chassis.waitUntilDone();
+    chassis.setPose(-30.7, 14.53, 270);
+    chassis.turnToHeading(180, 2000);
+    // scraperPistion.toggle();
 
     // Collect Octoballs from Loader
-    chassis.moveToPoint(-30.7,  6, 3000);
-    chassis.waitUntilDone();
-    pros::delay(200);
+    // chassis.moveToPoint(-30.7,  6, 3000);
+    // chassis.waitUntilDone();
+    // pros::delay(200);
 
     // Output Octoballs into Long Goal
     chassis.moveToPoint(-30.7, 31, 5000,{.forwards = false});
@@ -92,9 +94,9 @@ void Right_side() {
     chassis.turnToHeading(180, 3000);
 
     // Collect Octoballs from Loader
-    chassis.moveToPoint(-30.7,  6, 3000);
-    chassis.waitUntilDone();
-    pros::delay(200);
+    // chassis.moveToPoint(-30.7,  6, 3000);
+    // chassis.waitUntilDone();
+    // pros::delay(200);
     
     // Output Octoballs into Long Goal
     chassis.moveToPoint(30.7, 31, 5000,{.forwards = false});
@@ -140,8 +142,10 @@ void Skills() {
 
 }
 
-void Neutral() {
-    chassis.moveToPoint(0, 5, 5000);
+void Var_15PointSkills() {
+    chassis.moveToPoint(0, 10, 3000, {.minSpeed=100});
+    chassis.waitUntilDone();
+    chassis.moveToPoint(0, 20, 3000, {.minSpeed=100});
 }
 
 
@@ -181,10 +185,6 @@ void opcontrol() {
         
         if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)){
             scraperPistion.toggle();
-        }
-
-        // Debugging
-        if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
         }
         
 
